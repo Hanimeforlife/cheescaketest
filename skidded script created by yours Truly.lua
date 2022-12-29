@@ -301,7 +301,7 @@ end)
 
 --fling
 game:GetService("UserInputService").InputBegan:Connect(function(inp)
-    if inp.KeyCode == "5" then
+    if inp.KeyCode == Enum.KeyCode.Zero then
 local A_1 = {
                         [1] = getrenv()._G.Pass,
                         [2] = "Chatted",
