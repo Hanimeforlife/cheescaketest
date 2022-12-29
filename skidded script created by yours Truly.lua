@@ -272,7 +272,7 @@ mouse.KeyDown:Connect(function(k)
 			{
 				[1] = getrenv()._G.Pass,
 				[2] = "Chatted", 
-				[3] = [[ [SLAYER OF GODS] Sans Remover ]], 
+				[3] = [[ [SLAYER OF GODS] Remove Player ]], 
 				[4] = Color3.new(1,1,1)
 			}
 		local Event = game:GetService("ReplicatedStorage").Remotes.Events
@@ -299,10 +299,63 @@ until game.Players.LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value == nil
 end
 end)
 
+--fling
+game:GetService("UserInputService").InputBegan:Connect(function(inp)
+    if inp.KeyCode == "5" then
+local A_1 = {
+                        [1] = getrenv()._G.Pass,
+                        [2] = "Chatted",
+                        [3] = [[ [SLAYER OF GODS] FLING PLAYER ]],
+                        [4] = Color3.new(1, 0, 0)
+                    }
+                    local Event = game:GetService("ReplicatedStorage").Remotes.Events
+                    Event:FireServer(A_1)
+local part = Instance.new("Part")
+part.Parent = Game.Workspace
+part.Anchored = true
+part.Position = Vector3.new(20.4143,-143.366,3483.62)
+part.Size = Vector3.new(16,1.2,16)
+part.Name = "FlignPart"
+local part = Instance.new("Part")
+part.Parent = Game.Workspace
+part.Anchored = true
+part.CanCollide = falsed
+part.Size = Vector3.new(0.1,0.2,0.1)
+part.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+part.Name = "tp"
+wait(5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(20.4143,-141.366,3483.62) 
+wait(0.2)
+spawn(function()
+        local LockOn = game.Players.LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value
+        m = game.Players.LocalPlayer:GetMouse()
+        if LockOn then
+            target = LockOn
+            r2 = target.HumanoidRootPart.CFrame
+        elseif not LockOn then
+            r2 = m.Hit * CFrame.new(0, 4, 0)
+        end
+        local A_1 = {
+            [1] = getrenv()._G.Pass,
+            [2] = "PatienceAttack",
+            [3] = r2.p,
+            [4] = game:GetService("Players").LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value
+        }
+        local Event = game:GetService("ReplicatedStorage").Remotes.CharaMoves
+        Event:InvokeServer(A_1)
+end)
+wait(3.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.tp.CFrame
+game.Workspace.tp:Destroy()
+game.Workspace.FlignPart:Destroy()
+    end
+               end)
+
+
 --anti fling
 local mouse = game.Players.LocalPlayer:GetMouse()
 mouse.KeyDown:Connect(function(k) 
-    if k == "5" then
+    if k == "6" then
 		local A_1 = 
 			{
 				[1] = getrenv()._G.Pass,
