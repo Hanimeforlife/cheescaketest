@@ -218,7 +218,7 @@ end)
 --anti fling
 local mouse = game.Players.LocalPlayer:GetMouse()
 mouse.KeyDown:Connect(function(k) 
-    if k == "q" then
+    if k == "4" then
 		local A_1 = 
 			{
 				[1] = getrenv()._G.Pass,
