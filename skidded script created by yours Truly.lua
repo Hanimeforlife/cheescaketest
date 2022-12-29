@@ -215,10 +215,45 @@ event:InvokeServer(v1, v2, v3)
 end    
 end)
 
---anti fling
+--Sans Breaker attack
 local mouse = game.Players.LocalPlayer:GetMouse()
 mouse.KeyDown:Connect(function(k) 
     if k == "4" then
+		local A_1 = 
+			{
+				[1] = getrenv()._G.Pass,
+				[2] = "Chatted", 
+				[3] = [[ [SLAYER OF GODS] Sans Remover ]], 
+				[4] = Color3.new(1,1,1)
+			}
+		local Event = game:GetService("ReplicatedStorage").Remotes.Events
+		Event:FireServer(A_1) 
+    repeat
+        wait()
+        local args = {
+            [1] = getrenv()._G.Pass,
+            [2] = game:service("Players").LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value,
+            [3] = {
+                ["Type"] = "Normal", 
+                ["HitTime"] = 1, 
+                ["HurtAnimation"] = game:GetService("ReplicatedStorage").Animations.HurtAnimations.Knockback3, 
+                ["Velocity"] = Vector3.new(0,-2,0),
+                ["HitEffect"] = "LightHitEffect", 
+                ["CombatInv"] = true, 
+                ["Sound"] = game:GetService("ReplicatedStorage").RogueSounds.Snap, 
+                ["Damage"] = 10
+            }
+        }
+
+        game:GetService("ReplicatedStorage").Remotes.Damage:InvokeServer(unpack(args))
+until game.Players.LocalPlayer.Backpack.Main.LockOnScript.LockOn.Value == nil
+end
+end)
+
+--anti fling
+local mouse = game.Players.LocalPlayer:GetMouse()
+mouse.KeyDown:Connect(function(k) 
+    if k == "5" then
 		local A_1 = 
 			{
 				[1] = getrenv()._G.Pass,
