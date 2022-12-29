@@ -215,6 +215,29 @@ event:InvokeServer(v1, v2, v3)
 end    
 end)
 
+--anti fling
+local mouse = game.Players.LocalPlayer:GetMouse()
+mouse.KeyDown:Connect(function(k) 
+    if k == "q" then
+		local A_1 = 
+			{
+				[1] = getrenv()._G.Pass,
+				[2] = "Chatted", 
+				[3] = [[ [SLAYER OF GODS] ANTI FLING ]], 
+				[4] = Color3.new(1,1,1)
+			}
+		local Event = game:GetService("ReplicatedStorage").Remotes.Events
+		Event:FireServer(A_1) 
+        antifling = false
+        char = game.Players.LocalPlayer.Character
+        local vel = Instance.new('BodyVelocity',char.HumanoidRootPart)
+        vel.Name = 'Client'
+        vel.MaxForce = Vector3.new(4000,4000,4000)*math.huge
+        vel.P = math.huge
+        vel.Velocity = Vector3.new(0,0,0)
+end
+end)
+
 local bypass = Instance.new("BoolValue")
 bypass.Name = "Battling"
 bypass.Parent = game.Players.LocalPlayer.Character
